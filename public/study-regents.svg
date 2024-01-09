@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="29.4" height="32" viewBox="0 0 29.4 32" id="a" data-name="a">
+  <defs>
+    <clipPath id="b">
+      <rect width="25.83" height="32" rx="2" ry="2" style="fill: none; stroke-width: 0px;"/>
+    </clipPath>
+  </defs>
+  <g style="clip-path: url(#b);">
+    <rect width="25.83" height="32" rx="2" ry="2" style="fill: #1ed13f; stroke-width: 0px;"/>
+    <g id="c" data-name="b">
+      <rect x="3.7" y="26" width="25.7" height="2.9" rx="2" ry="2" style="fill: #fff; stroke-width: 0px;"/>
+    </g>
+  </g>
+</svg>
