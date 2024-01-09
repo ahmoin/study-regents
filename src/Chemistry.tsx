@@ -9,8 +9,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <>
       <Navbar
         title="Chemistry"
-        link="https://ahsanmoin05.github.io/study-regents/"
-        logo="/study-regents.svg"
+        link="/study-regents/"
+        logo="../study-regents.svg"
       />
       <div className="my-16" />
       <Jumbotron

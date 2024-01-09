@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <>
       <Navbar
         title="Study Regents"
-        link="https://ahsanmoin05.github.io/study-regents/"
+        link="/study-regents/"
         logo="study-regents.svg"
       />
       <div className="my-16" />
