@@ -24,7 +24,7 @@ function Jumbotron({ mainText, subText }: ComponentProps) {
           <div className="my-8" />
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             <a
-              href="/study-regents/algebratwo/"
+              href="/study-regents/chemistry/"
               className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
             >
               Get started

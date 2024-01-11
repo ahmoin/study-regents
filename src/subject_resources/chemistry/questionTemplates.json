@@ -1,0 +1,13 @@
+[
+  {
+    "questions": [
+      "What is the overall charge on the nucleus of a <elementName /> atom?"
+    ],
+    "answers": [
+      "has an overall positive charge",
+      "has an overall negative charge",
+      "contains negative electrons",
+      "contains positive electrons"
+    ]
+  }
+]
