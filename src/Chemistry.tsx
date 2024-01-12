@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import AnswerChoice from "./components/AnswerChoice";
@@ -54,31 +54,46 @@ if (questionText.includes("{elementName}")) {
   }
 }
 
-const shuffledChoices = shuffle([
+const initialChoices = shuffle([
   chosenQuestion.possibleFalseAnswers[0],
   chosenQuestion.possibleFalseAnswers[1],
   chosenQuestion.possibleFalseAnswers[2],
   chosenQuestion.correctAnswer,
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <>
-      <Navbar
-        title="Chemistry"
-        link="/study-regents/"
-        logo="../study-regents.svg"
-      />
-      <div className="my-16" />
-      <div className="max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <QuestionText questionHTML={questionText} />
-        <ul id="answersList" className="my-4 space-y-3 font-serif">
-          <AnswerChoice answerHTML={shuffledChoices[0]} />
-          <AnswerChoice answerHTML={shuffledChoices[1]} />
-          <AnswerChoice answerHTML={shuffledChoices[2]} />
-          <AnswerChoice answerHTML={shuffledChoices[3]} />
-        </ul>
-      </div>
-    </>
-  </React.StrictMode>
-);
+const ChemistryApp = () => {
+  const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
+
+  const handleChoiceSelect = (choice: string) => {
+    console.log(choice);
+    setSelectedChoice(choice);
+  };
+
+  return (
+    <React.StrictMode>
+      <>
+        <Navbar
+          title="Chemistry"
+          link="/study-regents/"
+          logo="../study-regents.svg"
+        />
+        <div className="my-16" />
+        <div className="max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <QuestionText questionHTML={questionText} />
+          <ul id="answersList" className="my-4 space-y-3 font-serif">
+            {initialChoices.map((choice, index) => (
+              <AnswerChoice
+                key={index}
+                answerHTML={choice}
+                isSelected={selectedChoice === choice}
+                onSelect={() => handleChoiceSelect(choice)}
+              />
+            ))}
+          </ul>
+        </div>
+      </>
+    </React.StrictMode>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")!).render(<ChemistryApp />);
