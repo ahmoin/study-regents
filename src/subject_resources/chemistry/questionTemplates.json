@@ -1,13 +1,24 @@
 [
   {
     "questions": [
-      "What is the overall charge on the nucleus of a <elementName /> atom?"
+      "Which phrase describes the nucleus of a<elementName style='text-transform:lowercase' /> atom?"
     ],
-    "answers": [
-      "has an overall positive charge",
+    "correctAnswer": "has an overall positive charge",
+    "possibleFalseAnswers": [
       "has an overall negative charge",
       "contains negative electrons",
       "contains positive electrons"
+    ]
+  },
+  {
+    "questions": [
+      "According to the wave-mechanical model, in the ground state, the 10 electrons of a<elementName class='font-mono' /> atom would be located"
+    ],
+    "correctAnswer": "in orbitals",
+    "possibleFalseAnswers": [
+      "in the nucleus",
+      "in the first shell",
+      "in the valence shell"
     ]
   }
 ]
