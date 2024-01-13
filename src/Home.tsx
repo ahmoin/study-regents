@@ -5,6 +5,17 @@ import Jumbotron from "./components/Jumbotron";
 import Footer from "./components/Footer";
 import "./Home.css";
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = JSON.parse(import.meta.env.FIREBASECONFIG);
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+console.log(analytics);
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <>
@@ -26,28 +37,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           GitHub
         </a>
         <a
-          href="#"
+          href="https://github.com/ahsanmoin05/study-regents"
           className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
         >
-          Placeholder
-        </a>
-        <a
-          href="#"
-          className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >
-          Placeholder
-        </a>
-        <a
-          href="#"
-          className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >
-          Placeholder
-        </a>
-        <a
-          href="#"
-          className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >
-          Placeholder
+          Sign in with Google
         </a>
       </div>
       <Footer

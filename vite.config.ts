@@ -6,6 +6,9 @@ import { resolve } from "path";
 export default defineConfig({
   base: "/study-regents/",
   plugins: [react()],
+  define: {
+    "process.env.FIREBASECONFIG": JSON.stringify(process.env.FIREBASECONFIG),
+  },
   build: {
     rollupOptions: {
       input: {
