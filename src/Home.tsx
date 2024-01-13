@@ -8,7 +8,15 @@ import "./Home.css";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-const firebaseConfig = JSON.parse(import.meta.env.FIREBASECONFIG);
+const firebaseConfig = {
+  apiKey: "AIzaSyAKWnjx32z2JslLqJJYRyN0booO202N18U",
+  authDomain: "study-regents.firebaseapp.com",
+  projectId: "study-regents",
+  storageBucket: "study-regents.appspot.com",
+  messagingSenderId: "649247461146",
+  appId: "1:649247461146:web:2925bb59534ae22844e6a3",
+  measurementId: "G-VXKX3K7XDF",
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
