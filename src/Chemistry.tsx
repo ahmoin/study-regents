@@ -78,19 +78,23 @@ const ChemistryApp = () => {
           logo="../study-regents.svg"
         />
         <div className="my-16" />
-        <div className="max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <QuestionText questionHTML={questionText} />
-          <ul id="answersList" className="my-4 space-y-3 font-serif">
-            {initialChoices.map((choice, index) => (
-              <AnswerChoice
-                key={index}
-                answerHTML={choice}
-                isSelected={selectedChoice === choice}
-                onSelect={() => handleChoiceSelect(choice)}
-              />
-            ))}
-          </ul>
-        </div>
+        <section className="bg-white dark:bg-gray-900">
+          <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-32">
+            <div className="max-w-7xl p-6 border border-gray-200 rounded-lg shadow dark:border-gray-700 bg-white dark:bg-gray-800">
+              <QuestionText questionHTML={questionText} />
+              <ul id="answersList" className="my-4 space-y-3 font-serif">
+                {initialChoices.map((choice, index) => (
+                  <AnswerChoice
+                    key={index}
+                    answerHTML={choice}
+                    isSelected={selectedChoice === choice}
+                    onSelect={() => handleChoiceSelect(choice)}
+                  />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
       </>
     </React.StrictMode>
   );
