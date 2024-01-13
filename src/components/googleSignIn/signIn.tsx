@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { auth, provider } from "./config";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, UserCredential } from "firebase/auth";
 
 function SignIn() {
-  const [value, setValue] = useState<string | null>(null);
   const handleClick = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
-    });
+    signInWithPopup(auth, provider)
+      .then((data: UserCredential) => {
+        if (data.user) {
+          localStorage.setItem("email", data.user.email || "");
+        }
+      })
+      .catch((error) => {
+        console.error("Error signing in:", error);
+      });
   };
 
   useEffect(() => {
-    setValue(localStorage.getItem("email"));
-  });
+    const storedEmail = localStorage.getItem("email");
+    if (storedEmail !== null) {
+      console.log("Stored email:", storedEmail);
+    }
+  }, []);
 
   return (
     <a
@@ -24,4 +31,5 @@ function SignIn() {
     </a>
   );
 }
+
 export default SignIn;
