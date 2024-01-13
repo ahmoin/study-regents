@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         mainText="The best tool to study for Regents."
         subText="Simplify your Regents preparation with our comprehensive study tool – your key to mastering the material, acing exams, and securing success."
       />
-      <div className="bg-white dark:bg-gray-900 flex-col flex space-y-6">
+      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 bg-white dark:bg-gray-900">
         <SignIn />
         <a
           href="https://github.com/ahsanmoin05/study-regents"
