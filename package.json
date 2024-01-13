@@ -1,7 +1,7 @@
 {
   "name": "study-regents",
-  "private": true,
   "version": "0.0.0",
+  "description": "Simplify your Regents preparation with our comprehensive study tool – your key to mastering the material, acing exams, and securing success.",
   "type": "module",
   "scripts": {
     "dev": "vite",
