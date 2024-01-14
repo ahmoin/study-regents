@@ -3,23 +3,11 @@
 @tailwind utilities;
 
 body {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(250, 246, 239, 1) 50%,
-    rgba(250, 246, 239, 1) 100%
-  );
+  background: white;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: rgb(17, 24, 39);
-    background: linear-gradient(
-      180deg,
-      rgba(17, 24, 39, 1) 0%,
-      rgba(12, 15, 23, 1) 50%,
-      rgba(12, 15, 23, 1) 100%
-    );
+    background: rgb(17 24 39);
   }
 }

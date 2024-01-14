@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import AnswerChoice from "./components/AnswerChoice";
@@ -6,6 +6,7 @@ import QuestionText from "./components/QuestionText";
 import "./Home.css";
 import questionTemplates from "./subject_resources/chemistry/questionTemplates.json";
 import elements from "./subject_resources/chemistry/periodicTableOfElements.json";
+
 function shuffle(array: any[]) {
   let currentIndex = array.length,
     randomIndex;
@@ -68,6 +69,20 @@ const ChemistryApp = () => {
     console.log(choice);
     setSelectedChoice(choice);
   };
+  const checkIfCorrectAnswer = () => {
+    if (!selectedChoice) {
+      return;
+    }
+    const correctAudio = new Audio("../sounds/correct.mp3");
+    const incorrectAudio = new Audio("../sounds/incorrect.mp3");
+    if (selectedChoice === chosenQuestion.correctAnswer) {
+      correctAudio.play();
+      document.getElementById("submitButton")!.innerText = "Correct";
+    } else {
+      incorrectAudio.play();
+      document.getElementById("submitButton")!.innerText = "Incorrect";
+    }
+  };
 
   return (
     <React.StrictMode>
@@ -92,6 +107,18 @@ const ChemistryApp = () => {
                   />
                 ))}
               </ul>
+              <button
+                type="button"
+                id="submitButton"
+                className={`font-medium rounded-lg text-sm px-4 py-2 text-center ${
+                  selectedChoice
+                    ? "cursor-pointer text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-500"
+                    : "cursor-not-allowed text-slate-400 bg-gray-700"
+                }`}
+                onClick={checkIfCorrectAnswer}
+              >
+                Submit Answer
+              </button>
             </div>
           </div>
         </section>

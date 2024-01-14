@@ -7,7 +7,7 @@ interface ComponentProps {
 
 function Jumbotron({ mainText, subText }: ComponentProps) {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section>
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           {mainText}
@@ -24,7 +24,7 @@ function Jumbotron({ mainText, subText }: ComponentProps) {
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
           <a
             href="/study-regents/chemistry/"
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-500"
           >
             Get started
             <svg

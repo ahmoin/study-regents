@@ -20,10 +20,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         mainText="The best tool to study for Regents."
         subText="Simplify your Regents preparation with our comprehensive study tool – your key to mastering the material, acing exams, and securing success."
       />
-      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 bg-white dark:bg-gray-900">
+      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
         <SignIn />
       </div>
-      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:ms-2 sm:me-2 pt-12 bg-white dark:bg-gray-900">
+      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:ms-2 sm:me-2 pt-12">
         <Card
           mainText="Blazingly fast"
           subText="Designed in pursuit of high-speed performance"
