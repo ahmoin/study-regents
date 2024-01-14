@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import AnswerChoice from "./components/AnswerChoice";
