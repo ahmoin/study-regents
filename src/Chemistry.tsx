@@ -29,21 +29,34 @@ const chosenQuestion =
 
 let questionText = chosenQuestion.question;
 
-if (questionText.includes("{elementName}")) {
-  const randomElementIndex = Math.floor(
-    Math.random() * elements.elements.length
-  );
-  const randomElement = elements.elements[randomElementIndex];
+let randomElementIndex = Math.floor(Math.random() * elements.elements.length);
+let randomElement = elements.elements[randomElementIndex];
+while (
+  chosenQuestion.minimumPopularity &&
+  elements.elements[randomElementIndex].popularity <
+    chosenQuestion.minimumPopularity
+) {
+  randomElementIndex = Math.floor(Math.random() * elements.elements.length);
+  randomElement = elements.elements[randomElementIndex];
+  while (
+    chosenQuestion.minimumAtomicNumber &&
+    randomElement.atomic_number < chosenQuestion.minimumAtomicNumber
+  ) {
+    randomElementIndex = Math.floor(Math.random() * elements.elements.length);
+    randomElement = elements.elements[randomElementIndex];
+  }
+}
 
-  if (/^[aeiouAEIOU]/.test(randomElement.charAt(0))) {
+if (questionText.includes("{elementName}")) {
+  if (/^[aeiouAEIOU]/.test(randomElement.element_name.charAt(0))) {
     questionText = questionText.replace(
       "{elementName}",
-      "n " + randomElement.toLowerCase()
+      "n " + randomElement.element_name.toLowerCase()
     );
   } else {
     questionText = questionText.replace(
       "{elementName}",
-      " " + randomElement.toLowerCase()
+      " " + randomElement.element_name.toLowerCase()
     );
   }
 
@@ -53,6 +66,48 @@ if (questionText.includes("{elementName}")) {
       (randomElementIndex + 1).toString()
     );
   }
+}
+
+let atomicNumberRandomized = "";
+for (let i = 0; i < chosenQuestion.possibleFalseAnswers.length; i++) {
+  if (chosenQuestion.possibleFalseAnswers[i].includes("{atomicNumber}")) {
+    chosenQuestion.possibleFalseAnswers[i] =
+      chosenQuestion.possibleFalseAnswers[i].replace(
+        "{atomicNumber}",
+        (randomElementIndex + 1).toString()
+      );
+  }
+  if (
+    chosenQuestion.possibleFalseAnswers[i].includes("{atomicNumberRandomized}")
+  ) {
+    if (atomicNumberRandomized === "") {
+      const randomValue: number = Math.floor(Math.random() * 4) + 1;
+
+      atomicNumberRandomized = (
+        randomElementIndex +
+        1 +
+        (Math.random() < 0.5 ? randomValue : -randomValue)
+      ).toString();
+    }
+    chosenQuestion.possibleFalseAnswers[i] =
+      chosenQuestion.possibleFalseAnswers[i].replace(
+        "{atomicNumberRandomized}",
+        atomicNumberRandomized
+      );
+  }
+}
+
+if (chosenQuestion.correctAnswer.includes("{atomicNumber}")) {
+  chosenQuestion.correctAnswer = chosenQuestion.correctAnswer.replace(
+    "{atomicNumber}",
+    (randomElementIndex + 1).toString()
+  );
+}
+if (chosenQuestion.correctAnswer.includes("{atomicNumberRandomized}")) {
+  chosenQuestion.correctAnswer = chosenQuestion.correctAnswer.replace(
+    "{atomicNumberRandomized}",
+    (randomElementIndex + 1 + Math.floor(Math.random() * 9)).toString()
+  );
 }
 
 const initialChoices = shuffle([
@@ -84,6 +139,8 @@ const ChemistryApp = () => {
     const correctAudio = new Audio("../sounds/correct.mp3");
     const incorrectAudio = new Audio("../sounds/incorrect.mp3");
     document.getElementById("submitButton")!.innerText = "Continue";
+    console.log(selectedChoice);
+    console.log(chosenQuestion.correctAnswer);
     if (selectedChoice === chosenQuestion.correctAnswer) {
       correctAudio.play();
       correctAnswer = selectedChoice;

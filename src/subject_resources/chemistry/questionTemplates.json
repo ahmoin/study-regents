@@ -6,7 +6,8 @@
       "has an overall negative charge",
       "contains negative electrons",
       "contains positive electrons"
-    ]
+    ],
+    "minimumPopularity": 30
   },
   {
     "question": "According to the wave-mechanical model, in the ground state, the {atomicNumber} electrons of a{elementName} atom would be located",
@@ -15,6 +16,19 @@
       "in the nucleus",
       "in the first shell",
       "in the valence shell"
-    ]
+    ],
+    "minimumPopularity": 30,
+    "minimumAtomicNumber": 6
+  },
+  {
+    "question": "What is the overall charge on the nucleus of a{elementName} atom?",
+    "correctAnswer": "+{atomicNumber}",
+    "possibleFalseAnswers": [
+      "−{atomicNumber}",
+      "+{atomicNumberRandomized}",
+      "−{atomicNumberRandomized}"
+    ],
+    "minimumPopularity": 30,
+    "minimumAtomicNumber": 6
   }
 ]

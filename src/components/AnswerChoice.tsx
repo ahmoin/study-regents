@@ -27,7 +27,6 @@ function AnswerChoice({
   if (isIncorrect) {
     dynamicClasses += " bg-red-400";
   }
-  console.log(isCorrect);
 
   if (!isCorrect && !isSelected && !isIncorrect) {
     dynamicClasses =
