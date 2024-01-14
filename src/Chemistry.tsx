@@ -48,15 +48,22 @@ while (
 }
 
 if (questionText.includes("{elementName}")) {
-  if (/^[aeiouAEIOU]/.test(randomElement.element_name.charAt(0))) {
-    questionText = questionText.replace(
-      "{elementName}",
-      "n " + randomElement.element_name.toLowerCase()
-    );
+  if (chosenQuestion.indefiniteArticle) {
+    if (/^[aeiouAEIOU]/.test(randomElement.element_name.charAt(0))) {
+      questionText = questionText.replace(
+        "{elementName}",
+        "n " + randomElement.element_name.toLowerCase()
+      );
+    } else {
+      questionText = questionText.replace(
+        "{elementName}",
+        " " + randomElement.element_name.toLowerCase()
+      );
+    }
   } else {
     questionText = questionText.replace(
       "{elementName}",
-      " " + randomElement.element_name.toLowerCase()
+      randomElement.element_name.toLowerCase()
     );
   }
 

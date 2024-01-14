@@ -7,6 +7,7 @@
       "contains negative electrons",
       "contains positive electrons"
     ],
+    "indefiniteArticle": true,
     "minimumPopularity": 30
   },
   {
@@ -17,6 +18,7 @@
       "in the first shell",
       "in the valence shell"
     ],
+    "indefiniteArticle": true,
     "minimumPopularity": 30,
     "minimumAtomicNumber": 6
   },
@@ -28,7 +30,27 @@
       "+{atomicNumberRandomized}",
       "−{atomicNumberRandomized}"
     ],
+    "indefiniteArticle": true,
     "minimumPopularity": 30,
     "minimumAtomicNumber": 6
+  },
+  {
+    "question": "Which proposal in the development of the modern model of the atom was made before the others?",
+    "correctAnswer": "Atoms are hard, indivisible spheres of different sizes.",
+    "possibleFalseAnswers": [
+      "Atoms are mostly empty space with a small dense nucleus.",
+      "Atoms have electrons that have wavelike properties.",
+      "Atoms have an internal structure that contains negative particles."
+    ]
+  },
+  {
+    "question": "Which statement describes two different isotopes of {elementName}?",
+    "correctAnswer": "The isotopes contain a different number of neutrons but have the same atomic number.",
+    "possibleFalseAnswers": [
+      "The isotopes contain the same number of neutrons and have the same atomic number.",
+      "The isotopes contain the same number of neutrons but have a different atomic number.",
+      "The isotopes contain a different number of neutrons and have a different atomic number."
+    ],
+    "minimumPopularity": 30
   }
 ]
