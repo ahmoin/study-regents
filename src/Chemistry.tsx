@@ -62,25 +62,34 @@ const initialChoices = shuffle([
   chosenQuestion.correctAnswer,
 ]);
 
+let correctAnswer = "";
+let incorrectAnswer = "";
 const ChemistryApp = () => {
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
 
   const handleChoiceSelect = (choice: string) => {
-    console.log(choice);
-    setSelectedChoice(choice);
+    if (selectedChoice != "nextQuestion") {
+      setSelectedChoice(choice);
+    }
   };
+
   const checkIfCorrectAnswer = () => {
     if (!selectedChoice) {
       return;
     }
+    if (selectedChoice == "nextQuestion") {
+      location.reload();
+    }
+    setSelectedChoice("nextQuestion");
     const correctAudio = new Audio("../sounds/correct.mp3");
     const incorrectAudio = new Audio("../sounds/incorrect.mp3");
+    document.getElementById("submitButton")!.innerText = "Continue";
     if (selectedChoice === chosenQuestion.correctAnswer) {
       correctAudio.play();
-      document.getElementById("submitButton")!.innerText = "Correct";
+      correctAnswer = selectedChoice;
     } else {
+      incorrectAnswer = selectedChoice;
       incorrectAudio.play();
-      document.getElementById("submitButton")!.innerText = "Incorrect";
     }
   };
 
@@ -103,6 +112,11 @@ const ChemistryApp = () => {
                     key={index}
                     answerHTML={choice}
                     isSelected={selectedChoice === choice}
+                    isCorrect={
+                      correctAnswer === chosenQuestion.correctAnswer &&
+                      choice === correctAnswer
+                    }
+                    isIncorrect={choice === incorrectAnswer}
                     onSelect={() => handleChoiceSelect(choice)}
                   />
                 ))}
