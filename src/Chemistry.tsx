@@ -178,7 +178,7 @@ const ChemistryApp = () => {
         />
         <div className="my-16" />
         <section className="bg-white dark:bg-gray-900">
-          <div className="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+          <div className="pt-4 pb-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-16">
             <div className="max-w-7xl p-6 border border-gray-200 rounded-lg shadow dark:border-gray-700 bg-white dark:bg-gray-800">
               <QuestionText questionHTML={questionText} />
               <ul id="answersList" className="my-4 space-y-3 font-serif">

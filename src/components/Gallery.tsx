@@ -55,11 +55,7 @@ function Gallery() {
   }
   return (
     <section>
-      <div className="py-8 px-4 mx-auto max-w-screen-xl text-center">
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-          {" "}
-          Chemistry Reference Tables
-        </h1>
+      <div className="py-2 px-4 mx-auto max-w-screen-xl text-center">
         <div
           id="controls-carousel"
           className="relative w-full"
@@ -85,9 +81,9 @@ function Gallery() {
             data-carousel-prev
             onClick={prevSlide}
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:ring-gray-800/70 group-focus:outline-none">
               <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                className="w-4 h-4 text-gray-800 rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -110,9 +106,9 @@ function Gallery() {
             data-carousel-next
             onClick={nextSlide}
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:ring-gray-800/70 group-focus:outline-none">
               <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                className="w-4 h-4 text-gray-800 rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
