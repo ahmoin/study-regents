@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import AnswerChoice from "./components/AnswerChoice";
 import QuestionText from "./components/QuestionText";
+import Gallery from "./components/Gallery";
 import "./Home.css";
 import questionTemplates from "./subject_resources/chemistry/questionTemplates.json";
 import elements from "./subject_resources/chemistry/periodicTableOfElements.json";
@@ -104,24 +105,35 @@ for (let i = 0; i < chosenQuestion.possibleFalseAnswers.length; i++) {
   }
 }
 
-if (chosenQuestion.correctAnswer.includes("{atomicNumber}")) {
-  chosenQuestion.correctAnswer = chosenQuestion.correctAnswer.replace(
+let chosenCorrectAnswer = "";
+if (chosenQuestion.correctAnswer) {
+  chosenCorrectAnswer = chosenQuestion.correctAnswer;
+} else if (chosenQuestion.correctAnswers) {
+  chosenCorrectAnswer =
+    chosenQuestion.correctAnswers[
+      Math.floor(Math.random() * chosenQuestion.correctAnswers.length)
+    ];
+}
+if (chosenCorrectAnswer.includes("{atomicNumber}")) {
+  chosenCorrectAnswer = chosenCorrectAnswer.replace(
     "{atomicNumber}",
     (randomElementIndex + 1).toString()
   );
 }
-if (chosenQuestion.correctAnswer.includes("{atomicNumberRandomized}")) {
-  chosenQuestion.correctAnswer = chosenQuestion.correctAnswer.replace(
+if (chosenCorrectAnswer.includes("{atomicNumberRandomized}")) {
+  chosenCorrectAnswer = chosenCorrectAnswer.replace(
     "{atomicNumberRandomized}",
     (randomElementIndex + 1 + Math.floor(Math.random() * 9)).toString()
   );
 }
 
+shuffle(chosenQuestion.possibleFalseAnswers);
+
 const initialChoices = shuffle([
   chosenQuestion.possibleFalseAnswers[0],
   chosenQuestion.possibleFalseAnswers[1],
   chosenQuestion.possibleFalseAnswers[2],
-  chosenQuestion.correctAnswer,
+  chosenCorrectAnswer,
 ]);
 
 let correctAnswer = "";
@@ -147,8 +159,7 @@ const ChemistryApp = () => {
     const incorrectAudio = new Audio("../sounds/incorrect.mp3");
     document.getElementById("submitButton")!.innerText = "Continue";
     console.log(selectedChoice);
-    console.log(chosenQuestion.correctAnswer);
-    if (selectedChoice === chosenQuestion.correctAnswer) {
+    if (selectedChoice === chosenCorrectAnswer) {
       correctAudio.play();
       correctAnswer = selectedChoice;
     } else {
@@ -167,7 +178,7 @@ const ChemistryApp = () => {
         />
         <div className="my-16" />
         <section className="bg-white dark:bg-gray-900">
-          <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-32">
+          <div className="py-4 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
             <div className="max-w-7xl p-6 border border-gray-200 rounded-lg shadow dark:border-gray-700 bg-white dark:bg-gray-800">
               <QuestionText questionHTML={questionText} />
               <ul id="answersList" className="my-4 space-y-3 font-serif">
@@ -177,7 +188,7 @@ const ChemistryApp = () => {
                     answerHTML={choice}
                     isSelected={selectedChoice === choice}
                     isCorrect={
-                      correctAnswer === chosenQuestion.correctAnswer &&
+                      correctAnswer === chosenCorrectAnswer &&
                       choice === correctAnswer
                     }
                     isIncorrect={choice === incorrectAnswer}
@@ -199,6 +210,7 @@ const ChemistryApp = () => {
               </button>
             </div>
           </div>
+          <Gallery />
         </section>
       </>
     </React.StrictMode>
