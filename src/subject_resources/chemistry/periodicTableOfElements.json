@@ -143,7 +143,19 @@
     {
       "element_name": "Copper",
       "popularity": 27,
-      "atomic_number": 29
+      "atomic_number": 29,
+      "physical_properties": [
+        "Copper can be flattened into sheets.",
+        "Copper conducts an electric current.",
+        "Copper has a red-orange color",
+        "Copper is malleable and ductile."
+      ],
+      "chemical_properties": [
+        "Copper reacts with oxygen.",
+        "Copper reacts with sulfuric acid.",
+        "Copper reacts with nitric acid.",
+        "Copper can undergo oxidation and reduction reactions."
+      ]
     },
     {
       "element_name": "Zinc",
@@ -233,7 +245,17 @@
     {
       "element_name": "Silver",
       "popularity": 17,
-      "atomic_number": 47
+      "atomic_number": 47,
+      "chemical_properties": [
+        "Silver reacts slowly with atmospheric oxygen to form a tarnished surface.",
+        "Silver is relatively unreactive with most acids.",
+        "Silver forms a variety of compounds, including oxides, sulfides, and halides."
+      ],
+      "physical_properties": [
+        "Silver is a shiny, white metal with a metallic luster.",
+        "Silver is highly ductile and malleable, making it useful for various applications.",
+        "Silver has the highest electrical conductivity of any metal."
+      ]
     },
     {
       "element_name": "Cadmium",

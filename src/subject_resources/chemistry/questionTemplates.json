@@ -57,5 +57,23 @@
     "question": "An element that is a very reactive metal could have an atomic number of",
     "possibleFalseAnswers": ["9", "17", "35", "79", "78"],
     "correctAnswers": ["3", "11", "19", "37", "55", "87"]
+  },
+  {
+    "question": "Which statement describes a chemical property of {elementName}?",
+    "correctAnswer": "{chemicalProperty}",
+    "possibleFalseAnswers": [
+      "{physicalProperty}",
+      "{physicalProperty}",
+      "{physicalProperty}"
+    ]
+  },
+  {
+    "question": "Which statement describes a physical property of {elementName}?",
+    "correctAnswer": "{physicalProperty}",
+    "possibleFalseAnswers": [
+      "{chemicalProperty}",
+      "{chemicalProperty}",
+      "{chemicalProperty}"
+    ]
   }
 ]

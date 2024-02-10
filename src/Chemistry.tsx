@@ -32,6 +32,24 @@ let questionText = chosenQuestion.question;
 
 let randomElementIndex = Math.floor(Math.random() * elements.elements.length);
 let randomElement = elements.elements[randomElementIndex];
+if (
+  chosenQuestion.correctAnswer &&
+  (chosenQuestion.correctAnswer.includes("{chemicalProperty}") ||
+    chosenQuestion.correctAnswer.includes("{physicalProperty}"))
+) {
+  let propertyType: "chemical_properties" | "physical_properties";
+  if (chosenQuestion.correctAnswer.includes("{chemicalProperty}")) {
+    propertyType = "chemical_properties";
+  } else {
+    propertyType = "physical_properties";
+  }
+
+  while (!(elements.elements[randomElementIndex] as any)[propertyType]) {
+    randomElementIndex = Math.floor(Math.random() * elements.elements.length);
+    randomElement = elements.elements[randomElementIndex];
+  }
+}
+
 while (
   chosenQuestion.minimumPopularity &&
   elements.elements[randomElementIndex].popularity <
@@ -73,6 +91,59 @@ if (questionText.includes("{elementName}")) {
       "{atomicNumber}",
       (randomElementIndex + 1).toString()
     );
+  }
+}
+if (
+  chosenQuestion.correctAnswer &&
+  (chosenQuestion.correctAnswer.includes("{chemicalProperty}") ||
+    chosenQuestion.correctAnswer.includes("{physicalProperty}")) &&
+  (chosenQuestion.correctAnswer.includes("{chemicalProperty}")
+    ? randomElement.chemical_properties
+    : randomElement.physical_properties)
+) {
+  const propertyType = chosenQuestion.correctAnswer.includes(
+    "{chemicalProperty}"
+  )
+    ? randomElement.chemical_properties
+    : randomElement.physical_properties;
+
+  if (propertyType) {
+    const randomProperty =
+      propertyType[Math.floor(Math.random() * propertyType.length)];
+
+    chosenQuestion.correctAnswer = chosenQuestion.correctAnswer.replace(
+      chosenQuestion.correctAnswer.includes("{chemicalProperty}")
+        ? "{chemicalProperty}"
+        : "{physicalProperty}",
+      randomProperty
+    );
+  }
+}
+
+for (let i = 0; i < chosenQuestion.possibleFalseAnswers.length; i++) {
+  const propertyType = chosenQuestion.possibleFalseAnswers[i].includes(
+    "{chemicalProperty}"
+  )
+    ? randomElement.chemical_properties
+    : randomElement.physical_properties;
+
+  if (
+    (propertyType &&
+      chosenQuestion.possibleFalseAnswers[i].includes("{chemicalProperty}")) ||
+    chosenQuestion.possibleFalseAnswers[i].includes("{physicalProperty}")
+  ) {
+    if (Array.isArray(propertyType)) {
+      const randomIndex = Math.floor(Math.random() * propertyType.length);
+      const unusedProperty = propertyType[randomIndex];
+      propertyType.splice(randomIndex, 1);
+      chosenQuestion.possibleFalseAnswers[i] =
+        chosenQuestion.possibleFalseAnswers[i].replace(
+          chosenQuestion.possibleFalseAnswers[i].includes("{chemicalProperty}")
+            ? "{chemicalProperty}"
+            : "{physicalProperty}",
+          unusedProperty
+        );
+    }
   }
 }
 
